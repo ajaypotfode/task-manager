@@ -1,0 +1,105 @@
+project/
+├── app/
+│   ├── api/
+│   │   ├── ai/
+│   │   │   └── route.ts
+│   │   ├── tasks/
+│   │   │   └── route.ts
+│   │   ├── voice/
+│   │   │   └── route.ts
+│   │   └── auth/
+│   │       └── route.ts
+│   │
+│   ├── dashboard/
+│   │   ├── page.tsx
+│   │   └── components/
+│   │       └── DashboardHeader.tsx
+│   │
+│   ├── tasks/
+│   │   ├── page.tsx
+│   │   ├── components/
+│   │   │   ├── TaskCard.tsx
+│   │   │   ├── TaskList.tsx
+│   │   │   └── AddTaskModal.tsx
+│   │   └── loading.tsx
+│   │
+│   ├── voice/
+│   │   ├── page.tsx
+│   │   ├── components/
+│   │   │   ├── VoiceRecorder.tsx
+│   │   │   └── VoiceWave.tsx
+│   │   └── loading.tsx
+│   │
+│   ├── layout.tsx
+│   └── globals.css
+│
+├── components/
+│   ├── ui/
+│   │   ├── Button.tsx
+│   │   ├── Input.tsx
+│   │   ├── Modal.tsx
+│   │   ├── Card.tsx
+│   │   └── VoiceMicButton.tsx
+│   └── layout/
+│       ├── Navbar.tsx
+│       └── Sidebar.tsx
+│
+├── features/
+│   ├── tasks/
+│   │   ├── atoms.ts               // Jotai state for tasks
+│   │   ├── api.ts                 // Client fetch wrappers
+│   │   ├── actions.ts             // Server actions
+│   │   ├── types.ts
+│   │   └── utils.ts
+│   │
+│   ├── voice/
+│   │   ├── atoms.ts
+│   │   ├── api.ts
+│   │   └── stt.ts                 // Web Speech or Deepgram logic
+│   │
+│   ├── ai/
+│   │   ├── atoms.ts               // AI response state
+│   │   ├── openai.ts              // OpenAI client
+│   │   ├── prompts/
+│   │   │   └── taskParser.ts
+│   │   └── parse.ts               // AI parsing logic
+│   │
+│   └── user/
+│       ├── atoms.ts
+│       ├── api.ts
+│       └── types.ts
+│
+├── lib/
+│   ├── db.ts                      // Prisma client
+│   ├── auth.ts
+│   ├── logger.ts
+│   ├── stt.ts                     // Shared Voice functions
+│   └── tts.ts                     // Shared TTS functions
+│
+├── prisma/
+│   ├── schema.prisma
+│   └── migrations/
+│
+├── hooks/
+│   ├── useVoiceRecorder.ts
+│   ├── useAICommand.ts
+│   └── useToast.ts
+│
+├── types/
+│   ├── task.ts
+│   ├── ai.ts
+│   └── index.ts
+│
+├── utils/
+│   ├── format.ts
+│   ├── dates.ts
+│   └── validate.ts
+│
+├── public/
+│   ├── icons/
+│   └── images/
+│
+├── tailwind.config.js
+├── tsconfig.json
+├── package.json
+└── env.mjs
