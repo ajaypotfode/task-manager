@@ -1,6 +1,7 @@
 import mongoose, { Document, Model, Schema, Types } from 'mongoose'
 
 export interface CategoryType extends Document {
+    _id:Types.ObjectId
     name: string,
     userId: Types.ObjectId,
 }
@@ -15,7 +16,7 @@ const categorySchema = new Schema<CategoryType>({
         type: Schema.Types.ObjectId,
         required: true
     }
-});
+},{timestamps:true});
 
 const CategoryModel = mongoose.models.categories as Model<CategoryType>
     || mongoose.model<CategoryType>('categories', categorySchema);

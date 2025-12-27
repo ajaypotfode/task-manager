@@ -1,0 +1,9 @@
+export const weekObj:{[key:string]:number} = {
+    Mon: 0,
+    Tue: 0,
+    Wed: 0,
+    Thu: 0,
+    Fri: 0,
+    Sat: 0,
+    Sun: 0,
+}

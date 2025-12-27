@@ -1,4 +1,4 @@
-import mongoose, { Model,Document, Schema, Types } from "mongoose";
+import mongoose, { Model, Document, Schema, Types } from "mongoose";
 
 export interface TaskType extends Document {
     _id: Types.ObjectId,
@@ -9,7 +9,8 @@ export interface TaskType extends Document {
     time: string,
     category: Types.ObjectId,
     isComplete: boolean,
-    priority: string
+    priority: string,
+    day: string
 }
 
 const taskSchema = new Schema<TaskType>({
@@ -33,6 +34,10 @@ const taskSchema = new Schema<TaskType>({
         type: String,
         required: [true, "Time Is required"],
     },
+    day: {
+        type: String,
+        required: true
+    },
     category: {
         type: Schema.Types.ObjectId,
         required: [true, 'category is required'],
@@ -49,7 +54,7 @@ const taskSchema = new Schema<TaskType>({
         default: 'high'
     }
 
-})
+}, { timestamps: true })
 
 const TaskModel = mongoose.models.tasks as Model<TaskType> ||
     mongoose.model('tasks', taskSchema);

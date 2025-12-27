@@ -9,8 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.90.12",
     "ag-charts-react": "^13.0.0",
+    "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",
+    "date-fns": "^4.1.0",
+    "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.555.0",
     "mongoose": "^9.0.1",
     "next": "16.0.4",
@@ -19,6 +23,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
