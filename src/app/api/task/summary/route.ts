@@ -41,7 +41,7 @@ const GET = async () => {
         })
 
         const chartData = Object.entries(weekObj).map(([day, count]) => ({
-            day=
+            // day=
 
         }))
 
