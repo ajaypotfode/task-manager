@@ -1,5 +1,5 @@
 import connectDatabase from "@/src/db/databaseConnection";
-import UserModel from "@/src/models/usersSchema";
+import UserModel from "@/src/schema/usersSchema";
 import { hash } from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 

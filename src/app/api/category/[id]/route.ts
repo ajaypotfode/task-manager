@@ -1,6 +1,6 @@
 import connectDatabase from "@/src/db/databaseConnection";
 import { getLoggedInUser } from "@/src/utils/jwtVerification";
-import CategoryModel from "@/src/models/categorySchema";
+import CategoryModel from "@/src/schema/categorySchema";
 import { NextResponse } from "next/server";
 
 export const GET = async (req: NextResponse, { params }: { params: Promise<{ id: string }> }): Promise<NextResponse> => {

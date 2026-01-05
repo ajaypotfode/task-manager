@@ -1,9 +1,40 @@
 'use client'
-import SummaryChart from '@/src/components/layout/summaryGraph'
+import { modalAtom, openModalAtom } from '@/src/atom/modalAtom'
+import { summaryAtom } from '@/src/atom/taskAtom'
+import SummaryChart from '@/src/components/ui/summaryGraph'
+import { useGetSummaryMutation } from '@/src/mutation/taskMutation'
+import { useAtom, useSetAtom } from 'jotai'
 import { CheckCircle2Icon, Clock, LucideTimer } from 'lucide-react'
-import React from 'react'
+import { useEffect } from 'react'
+
 
 const GraphPage = () => {
+    const [summary, setSummary] = useAtom(summaryAtom);
+    const { isPending: isSummaryPending, mutate: fetchSummary } = useGetSummaryMutation();
+    const setDialog = useSetAtom(openModalAtom);
+
+
+    const getSummaryData = () => {
+        fetchSummary(
+            undefined, {
+            onSuccess: (data) => {
+                setSummary(data.summary)
+            },
+            onError: (error) => {
+                setDialog({
+                    title: 'Fetch Failed',
+                    message: error.message || 'Failed To Fetch Summary',
+                    buttonText: 'Close'
+                })
+            }
+        }
+        )
+    }
+
+    useEffect(() => {
+        getSummaryData()
+    }, [])
+
 
     return (
         <div className='grid grid-cols-1 space-y-6 '>

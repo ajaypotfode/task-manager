@@ -1,9 +1,30 @@
-export const weekObj:{[key:string]:number} = {
-    Mon: 0,
-    Tue: 0,
-    Wed: 0,
-    Thu: 0,
-    Fri: 0,
-    Sat: 0,
-    Sun: 0,
+export const weekObj: { [key: string]: { complete: number, pending: number } } = {
+    Mon: {
+        complete: 0,
+        pending: 0
+    },
+    Tue: {
+        complete: 0,
+        pending: 0
+    },
+    Wed: {
+        complete: 0,
+        pending: 0
+    },
+    Thu: {
+        complete: 0,
+        pending: 0
+    },
+    Fri: {
+        complete: 0,
+        pending: 0
+    },
+    Sat: {
+        complete: 0,
+        pending: 0
+    },
+    Sun: {
+        complete: 0,
+        pending: 0
+    },
 }

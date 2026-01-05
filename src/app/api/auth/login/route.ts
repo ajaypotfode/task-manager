@@ -1,4 +1,4 @@
-import UserModel from '@/src/models/usersSchema';
+import UserModel from '@/src/schema/usersSchema';
 import { compare } from 'bcryptjs';
 import { NextRequest, NextResponse } from 'next/server'
 import jwt from 'jsonwebtoken'

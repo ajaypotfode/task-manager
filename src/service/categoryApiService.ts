@@ -5,7 +5,7 @@ import axios from "axios";
 interface GetCategoryResponse {
     message: string;
     success: boolean;
-    categories?: Category[];
+    categories: Category[];
     error?: unknown;
 
 }

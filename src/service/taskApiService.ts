@@ -1,20 +1,40 @@
-import { Task, TaskPayload } from "@/src/types/task";
+import { SummaryType, Task, TaskPayload } from "@/src/types/task";
 import axios from "axios";
 
 interface GetTaskResponse {
     message: string;
     success: boolean;
-    task?: Task[];
+    tasks: Task[];
     error?: unknown;
 
 }
 
-export const getTaskAPI = async (): Promise<GetTaskResponse> => {
+export const getTaskAPI = async (type: string): Promise<GetTaskResponse> => {
     // const data = JSON.stringify(loginData)
     const config = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: `/api/task`,
+        url: `/api/task?category=${type}`,
+        headers: {
+            'Content-Type': 'application/json',
+        }
+
+    };
+
+    try {
+        const response = await axios.request<GetTaskResponse>(config)
+        return response.data
+    } catch (error: unknown) {
+        throw error;
+    }
+}
+
+export const getRecentTask = async (): Promise<GetTaskResponse> => {
+    // const data = JSON.stringify(loginData)
+    const config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `/api/task/recent`,
         headers: {
             'Content-Type': 'application/json',
         }
@@ -32,7 +52,7 @@ export const getTaskAPI = async (): Promise<GetTaskResponse> => {
 interface CreateTaskResponse {
     message: string;
     success: boolean;
-    task?: Task;
+    task: Task;
     error?: unknown;
 
 }
@@ -61,7 +81,7 @@ export const createTaskAPI = async (payload: TaskPayload): Promise<CreateTaskRes
 interface DeleteTaskResponse {
     message: string;
     success: boolean;
-    task?: Task;
+    task: Task;
     error?: unknown;
 
 }
@@ -88,7 +108,7 @@ export const deleteTaskAPI = async (id: string): Promise<DeleteTaskResponse> => 
 interface MarkAsCompletetaskResponse {
     message: string;
     success: boolean;
-    task?: Task;
+    task: Task;
     error?: unknown;
 
 }
@@ -110,3 +130,32 @@ export const markAsCompletetaskAPI = async (id: string): Promise<MarkAsCompletet
         throw error;
     }
 }
+
+
+interface GetSummaryResponse {
+    message: string;
+    success: boolean;
+    summary: SummaryType;
+    error?: unknown;
+
+}
+
+
+export const getWeeklySummaryAPI = async (): Promise<GetSummaryResponse> => {
+    const config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `/api/task/summary`,
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    };
+
+    try {
+        const response = await axios.request<GetSummaryResponse>(config)
+        return response.data
+    } catch (error: unknown) {
+        throw error;
+    }
+}
+

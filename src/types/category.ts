@@ -4,4 +4,6 @@ export interface Category {
     userId: string;
     createdAt: string;
     updatedAt: string;
+    taskCount:number;
+    color:string;
 }

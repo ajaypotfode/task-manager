@@ -1,7 +1,8 @@
 import connectDatabase from "@/src/db/databaseConnection";
 import { getLoggedInUser } from "@/src/utils/jwtVerification";
-import CategoryModel from "@/src/models/categorySchema";
+import CategoryModel from "@/src/schema/categorySchema";
 import { NextRequest, NextResponse } from "next/server";
+import { getCategoryColor } from "@/src/helpers/api/categoryColor";
 
 export const POST = async (req: NextRequest): Promise<NextResponse> => {
     try {
@@ -12,10 +13,12 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
 
         const newCategory = new CategoryModel({
             name,
-            userId: user?.userId
+            userId: user?.userId,
+            color: getCategoryColor(name)
         })
 
-        await newCategory.save()
+        await newCategory.save();
+
 
         return NextResponse.json({ message: "Category Created successFully", success: true, category: newCategory },
             { status: 200 }
@@ -65,6 +68,13 @@ export const DELETE = async (req: NextRequest): Promise<NextResponse> => {
             _id: id
         });
 
+        if (!category) {
+            return NextResponse.json(
+                { success: false, message: 'category not found' },
+                { status: 404 }
+            );
+        }
+
         return NextResponse.json({ message: "Category Deleted successFully", success: true, category: category },
             { status: 200 }
         )
@@ -91,6 +101,13 @@ export const UPDATE = async (req: NextResponse): Promise<NextResponse> => {
         },
             { name: name }
         )
+
+        if (!category) {
+            return NextResponse.json(
+                { success: false, message: 'category not found' },
+                { status: 404 }
+            );
+        }
 
         return NextResponse.json({ message: "Category Updated successFully", success: true, category: category },
             { status: 200 }
